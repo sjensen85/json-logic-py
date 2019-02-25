@@ -364,6 +364,13 @@ class JSONLogicTest(unittest.TestCase):
         """
         self.assertEqual(jsonLogic({"log": "apple"}), "apple")
 
+    def test_type(self):
+        """
+        Checks type of first value to the string representation of the second value.
+        """
+        self.assertEqual(jsonLogic({"type": ["This is a string and should be None", None]}), True)
+
+
 
 class SharedTests(unittest.TestCase):
     """This runs the tests from http://jsonlogic.com/tests.json."""
@@ -385,3 +392,6 @@ SHARED_TESTS = json.loads(
 for item in SHARED_TESTS:
     if isinstance(item, list):
         SharedTests.create_test(*item)
+
+if __name__ == '__main__':
+    unittest.main()

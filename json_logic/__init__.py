@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 import sys
 from six.moves import reduce
 import logging
+import strconv
 
 logger = logging.getLogger(__name__)
 
@@ -168,6 +169,7 @@ operations = {
     "max": lambda *args: max(args),
     "merge": merge,
     "count": lambda *args: sum(1 if a else 0 for a in args),
+    "type": lambda a, b: strconv.infer(type(a)) is b,
 }
 
 
